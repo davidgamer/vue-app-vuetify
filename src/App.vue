@@ -1,47 +1,65 @@
 <template>
-<!-- App.vue -->
+  <!-- App.vue -->
 
-<v-app>
-  <v-navigation-drawer app>
-    <!-- -->
-  </v-navigation-drawer>
+  <v-app inpire  app right>
+    <v-navigation-drawer v-model="drawer"   app>
+      <!-- -->
+      <v-list dense>
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-action>
 
-  <v-app-bar app>
-    <!-- -->
-  </v-app-bar>
+          <v-list-item-content>
+            <v-list-item-title><router-link to="/">Home</router-link></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-  <!-- Sizes your content based upon application components -->
-  <v-content>
+        <v-list-item link>
+          <v-list-item-action>
+            <v-icon>mdi-contact-mail</v-icon>
+          </v-list-item-action>
 
-    <!-- Provides the application the proper gutter -->
-    <v-container fluid>
+          <v-list-item-content>
+            <v-list-item-title><router-link to="about">About</router-link></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
-      <!-- If using vue-router -->
-      <router-view></router-view>
-    </v-container>
-  </v-content>
+    <v-app-bar app color="accent" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"  />
+      <v-toolbar-title>Application</v-toolbar-title>
+    </v-app-bar>
 
-  <v-footer app>
-    <!-- -->
-  </v-footer>
-</v-app>
+    <!-- Sizes your content based upon application components -->
+    <v-content>
+      <!-- Provides the application the proper gutter -->
+      <v-container class="mx-4" fluid>
+         <div class="d-flex mb-6">
+            <router-view></router-view>
+         </div>
+      </v-container>
+    </v-content>
+    <v-footer app>
+      <span class="white--text">&copy; 2019</span>
+    </v-footer>
+  </v-app>
 </template>
-
 <script>
-
-
 export default {
-  name: 'App',
-
-  components: {
-   
-  },
-
+  name: "App",
   data: () => ({
-    //
+    drawer: true
   }),
-  created(){
-    this.$vuetify.theme.light = true
+  methods: {
+
   }
 };
 </script>
+<style lang="scss" scoped>
+  a{
+    color : rgba(0, 0, 0, 0.54);
+    text-decoration: none;
+  }
+</style>
